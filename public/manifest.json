@@ -1,0 +1,12 @@
+{
+	"name": "KJV Reader",
+	"icons": [
+		{
+			"src": "res\/img\/favicons\/android-chrome-192x192.png",
+			"sizes": "192x192",
+			"type": "image\/png"
+		}
+	],
+	"theme_color": "#ffffff",
+	"display": "standalone"
+}
