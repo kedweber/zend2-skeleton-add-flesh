@@ -1,10 +1,115 @@
 /**
  * CLiPs - WEBerStudio.net
  *
- * Placeholder for skeleton styles
  *
  * @author    Ked Weber <not@weberstudio.net>
  * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
  * @copyright Copyright (c) 2017
  * @license   All rights reserved
  */
+body {
+    height:100%;
+}
+#main {
+    margin: 0 auto;
+    height: 100%;
+    position: relative;
+    min-height: 100%;
+    overflow-y: scroll;
+}
+.nav-buffer {
+    min-height: 35px;
+    clear: both;
+}
+.page-footer {
+    position:fixed;
+    left:0px;
+    bottom:0;
+    height:30px;
+    min-height: 2em;
+    width:100%;
+    background-color: #101010;
+    color: white;
+    padding: .5em 2em;
+    align-content: center;
+    -webkit-align-content: center;
+}
+.page-footer > .footer-content {
+    margin: 0 auto;
+}
+
+.img-sally-center {
+    display: block;
+    margin: 0 auto;
+    /*border: 2px solid #101010;*/
+}
+
+/* FORMS */
+input[type='text'], input[type='search'], input[type='password'], input[type='email'] {
+    width: 100%;
+    height: 40px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    border: 2px solid #a3b8c5;
+    background-color: #e0e9ef;
+    margin: 5px 0;
+    padding: 0 15px;
+    border-radius: 0;
+    outline: none !important;
+    outline-width: 0 !important;
+    -webkit-appearance: none !important;
+    box-shadow: none !important;
+}
+
+.form-signin {
+    color: white;
+    width: 300px;
+    padding: 19px 29px;
+    background-color: #373636;
+    background-color: #101010;
+    background-image: -webkit-linear-gradient(top, #3c3c3c 0, #222 100%);
+    background-image: -o-linear-gradient(top, #3c3c3c 0, #222 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #3c3c3c), to(#222));
+    background-image: linear-gradient(to bottom, #3c3c3c 0, #222 100%);
+    /*position: relative;*/
+    left: 50%;
+    top: 50%;
+    margin: 0 auto;
+}
+.form-signin > button,
+.form-signin > a,
+.form-signin > button > a {
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.15em;
+    /*letter-spacing: 3px;*/
+    line-height: 20px;
+    text-transform: uppercase;
+    text-decoration: none;
+
+}
+.form-signin > button > a {
+    width:100%;
+}
+.form-signin > button {
+    margin: 10px 0px 0px;
+    line-height: 38px;
+    border: 0;
+
+    width: 100%;
+    height: 40px;
+    background-color: #ff6b00;
+    background-color: rgba(6, 53, 17, 0.93);
+    background-color: rgb(60, 97, 69);
+    background-color: rgba(60, 97, 69, 0.93) !important;
+
+    -webkit-transition: background-color 0.1s linear, color 0.1s linear;
+    -moz-transition: background-color 0.1s linear, color 0.1s linear;
+    transition: background-color 0.1s linear, color 0.1s linear;
+    cursor: pointer;
+    -webkit-appearance: button;
+    border-radius: 0;
+
+}

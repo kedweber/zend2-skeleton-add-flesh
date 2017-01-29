@@ -1,0 +1,4 @@
+<a id="section_<?php echo($section->getId()) ?>" class="section list-group-item" href="<?php echo $this->basepath.'/'.$section->get('id').'/edit' ?>" data-json='<?php echo json_encode($section); ?>'>
+    <h4 class="list-group-item-heading"><?php echo $section->get('title'); ?></h4>
+    <p class="list-group-item-text"><?php echo $section->get('description'); ?></p>
+</a>
