@@ -67,7 +67,7 @@ class Sections
 
     /**
      * One Section has Many Questions.
-     * @ORM\OneToMany(targetEntity="Clips\Entity\Questions", mappedBy="section")
+     * @!ORM\OneToMany(targetEntity="Clips\Entity\Questions", mappedBy="section")
      *
      */
     private $questions;
