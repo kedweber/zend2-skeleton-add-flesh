@@ -44,24 +44,6 @@ body {
     /*border: 2px solid #101010;*/
 }
 
-/* FORMS */
-input[type='text'], input[type='search'], input[type='password'], input[type='email'] {
-    width: 100%;
-    height: 40px;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
-    font-size: 14px;
-    border: 2px solid #a3b8c5;
-    background-color: #e0e9ef;
-    margin: 5px 0;
-    padding: 0 15px;
-    border-radius: 0;
-    outline: none !important;
-    outline-width: 0 !important;
-    -webkit-appearance: none !important;
-    box-shadow: none !important;
-}
 
 .form-signin {
     color: white;
@@ -78,6 +60,7 @@ input[type='text'], input[type='search'], input[type='password'], input[type='em
     top: 50%;
     margin: 0 auto;
 }
+.wandering-link,
 .form-signin > button,
 .form-signin > a,
 .form-signin > button > a {
@@ -91,26 +74,76 @@ input[type='text'], input[type='search'], input[type='password'], input[type='em
     text-transform: uppercase;
     text-decoration: none;
 }
-.form-signin > button > a:hover {
-    background-color: #613c58;
-    letter-spacing: 0.15em;
-}
 
+.wandering-link,
 .form-signin > button {
     margin: 10px 0px 0px;
     line-height: 38px;
     border: 0;
+    border-radius: 0;
     height: 40px;
-    background-color: #ff6b00;
     background-color: rgba(6, 53, 17, 0.93);
     background-color: rgb(60, 97, 69);
     background-color: rgba(60, 97, 69, 0.93) !important;
-
+    cursor: pointer;
     -webkit-transition: background-color 0.1s linear, color 0.1s linear;
     -moz-transition: background-color 0.1s linear, color 0.1s linear;
     transition: background-color 0.1s linear, color 0.1s linear;
-    cursor: pointer;
+}
+.form-signin > button {
     -webkit-appearance: button;
-    border-radius: 0;
+}
+.wandering-link {
+    transition: all 0.3s ease 0s;
+}
+.wandering-link > .glyphicon-star {
+    font-weight: 800;
+}
+.wandering-link:hover {
+    background-color: #063511;;
+    color: #fff;
+    text-shadow: 2px 0px #000000;
+}
+.wandering-link:hover > .glyphicon-star {
+    color: #fffe54;
+}
 
+/* FORMS */
+input[type='text'], input[type='search'], input[type='password'], input[type='email'] {
+    color: #101010;
+    width: 100%;
+    height: 40px;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-size: 1em;
+    border: 2px solid #a3b8c5;
+    background-color: #e0e9ef;
+    margin: 5px 0;
+    padding: 0 15px;
+    border-radius: 0;
+    outline: none !important;
+    outline-width: 0 !important;
+    -webkit-appearance: none !important;
+    box-shadow: none !important;
+}
+/* override useragent defaults */
+input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
+    color: #101010;
+    background-color: #e0e9ef;
+}
+input:focus, select:focus, textarea:focus,
+input[type='text']:focus, input[type='search']:focus, input[type='password']:focus, input[type='email']:focus {
+    color: #101010;
+}
+.form-signin > input,
+.form-signin > select,
+.form-signin > textarea {
+    color: #101010 !important;
+    background-color: #e0e9ef;
+}
+
+.jumbo-header {
+    margin-top: 0px;
 }

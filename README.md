@@ -1,6 +1,7 @@
 
-# clips
-Children's Learning Interactive Profile Skeletons
+# [The eCLIPS Project](https://kedweber.github.io/zend2-skeleton-add-flesh) 
+
+## ~ Early Childhood Learning Interactive Profile System
 
 Teachers are charged with carrying the most precious burden of shaping the future on an astoundingly low budget. Among the many daily tasks an important and personal assessment of the child's development is to be consolidated into a profile. The primary purpose of the profile is to inform the parents of their child's developmental strengths and weaknesses. 
 
