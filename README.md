@@ -1,77 +1,25 @@
-ZendSkeletonApplication
-=======================
 
-Introduction
-------------
-This is a simple, skeleton application using the ZF2 MVC layer and module
-systems. This application is meant to be used as a starting place for those
-looking to get their feet wet with ZF2.
+# clips
+Children's Learning Interactive Profile Skeletons
 
-Installation
-------------
+Teachers are charged with carrying the most precious burden of shaping the future on an astoundingly low budget. Among the many daily tasks an important and personal assessment of the child's development is to be consolidated into a profile. The primary purpose of the profile is to inform the parents of their child's developmental strengths and weaknesses. 
 
-Using Composer (recommended)
-----------------------------
-The recommended way to get a working copy of this project is to clone the repository
-and use `composer` to install dependencies using the `create-project` command:
+When reviewing a child, within the scaffolding of national standards, often teachers find themselves at an impasse. There are a number of factors (areas of observation) that need to be considered based on the child's age.
 
-    curl -s https://getcomposer.org/installer | php --
-    php composer.phar create-project -sdev --repository-url="https://packages.zendframework.com" zendframework/skeleton-application path/to/install
+CLIPS will offer an outline of considerations that should be covered, while affording the opportunity to add and customize additional areas of observations. As a teacher selects the level of development for a particular student, a list of applicable general statements will be offered, with an online reference to specialized terminology. The generated statements will be general and are only meant to serve as an aid; a skeleton frame work, which the teacher can then edit to a specific child. Similar to sitting in a think-tank bouncing ideas within a group of related professionals, CLIPS should serve only to assist and stimulate the considerations of the teacher writing the portfolios. Of course in the process of communicating to student's parents, one will wish to find balance between educational jargon and the local vernacular.
 
-Alternately, clone the repository and manually invoke `composer` using the shipped
-`composer.phar`:
+Every profile requires adding objects (work samples and observation records) to indicate work done in real-life situations with authentic problem solving. CLIPS will need to allow for inclusion of such custom objects.
 
-    cd my/project/dir
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git
-    cd ZendSkeletonApplication
-    php composer.phar self-update
-    php composer.phar install
+# NOTES:
 
-(The `self-update` directive is to ensure you have an up-to-date `composer.phar`
-available.)
+# Initial Goals: 
+This is the formative phase of development, and even the code project name CLIPS is being reconsidered. In this phase, we are trying to map out the flow of the 'business logic' (viz. use cases). The immensity of all topics to cover is dauntingly large, and so to lay down the program's structure, we will focus first on 'Early childhood development', before adding additional groups.
 
-Another alternative for downloading the project is to grab it via `curl`, and
-then pass it to `tar`:
+# Exports:
+We will need feedback for how users would want their data delivered; word documents, plain-text, exports to third-party cloud services such as LifeCubby.me, et cetera.
 
-    cd my/project/dir
-    curl -#L https://github.com/zendframework/ZendSkeletonApplication/tarball/master | tar xz --strip-components=1
+# Data Storage:
+It would be wise to at least store the data of the children, for at least the duration from start to finishing a particular portfolio. If one begins a student's portfolio, and is cut off during the ride home in the metro, you would not wish to loose all your work. Many countries now have regulations on how long personal data may be stored. These issues will have to be looked into on a per country basis.
 
-You would then invoke `composer` to install dependencies per the previous
-example.
-
-Using Git submodules
---------------------
-Alternatively, you can install using native git submodules:
-
-    git clone git://github.com/zendframework/ZendSkeletonApplication.git --recursive
-
-Web Server Setup
-----------------
-
-### PHP CLI Server
-
-The simplest way to get started if you are using PHP 5.4 or above is to start the internal PHP cli-server in the root directory:
-
-    php -S 0.0.0.0:8080 -t public/ public/index.php
-
-This will start the cli-server on port 8080, and bind it to all network
-interfaces.
-
-**Note: ** The built-in CLI server is *for development only*.
-
-### Apache Setup
-
-To setup apache, setup a virtual host to point to the public/ directory of the
-project and you should be ready to go! It should look something like below:
-
-    <VirtualHost *:80>
-        ServerName zf2-tutorial.localhost
-        DocumentRoot /path/to/zf2-tutorial/public
-        SetEnv APPLICATION_ENV "development"
-        <Directory /path/to/zf2-tutorial/public>
-            DirectoryIndex index.php
-            AllowOverride All
-            Order allow,deny
-            Allow from all
-        </Directory>
-    </VirtualHost>
+# Platforms and Integration:
+Initial implementation is currently envisioned as a browser based app and possibly an Android App. The first allows for the largest possible use, the second (Android) would provide for more secure, localized storage and data-transfer efficiency. During the development phase, we will also be evaluating how to incorporate CLIPS into existing educational projects such as Moogle.
