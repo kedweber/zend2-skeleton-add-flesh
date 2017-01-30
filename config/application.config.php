@@ -1,4 +1,9 @@
 <?php
+//TODO COOKIE legal notification
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
 return array(
     // This should be an array of module namespaces used in the application.
     'modules' => array(
