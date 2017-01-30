@@ -11,6 +11,31 @@
 return array(
     'router' => array(
         'routes' => array(
+            'help' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/help',
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Question',
+                        'action'     => 'index',
+                    ),
+                ),
+            ),
+            'admin' => array(
+                'type' => 'Zend\Mvc\Router\Http\Literal',
+                'options' => array(
+                    'route'    => '/admin',
+//                    'constraints' => array(
+//                        'model' => '[a-zA-Z][a-zA-Z0-9_-]*',
+//                    ),
+                    'defaults' => array(
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller'    => 'Question',
+                        'action'        => 'index',
+                    ),
+                ),
+            ),
             'home' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
@@ -19,6 +44,66 @@ return array(
                         '__NAMESPACE__' => 'Clips\Controller',
                         'controller' => 'Index',
                         'action'     => 'index',
+                    ),
+                ),
+            ),
+            'login' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/login',
+                    'defaults' => array(
+                        'page' => 1,
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Account',
+                        'action' => 'login',
+                    ),
+                ),
+            ),
+            'logout' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/logout',
+                    'defaults' => array(
+                        'page' => 1,
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Account',
+                        'action' => 'logout',
+                    ),
+                ),
+            ),
+            'register' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/register',
+                    'defaults' => array(
+                        'page' => 1,
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Account',
+                        'action' => 'register',
+                    ),
+                ),
+            ),
+            'profile' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/profile',
+                    'defaults' => array(
+                        'page' => 1,
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Account',
+                        'action' => 'register',
+                    ),
+                ),
+            ),
+            'password' => array(
+                'type' => 'Literal',
+                'options' => array(
+                    'route' => '/password/reset',
+                    'defaults' => array(
+                        'page' => 1,
+                        '__NAMESPACE__' => 'Clips\Controller',
+                        'controller' => 'Account',
+                        'action' => 'passwordReset',
                     ),
                 ),
             ),
@@ -56,11 +141,40 @@ return array(
     ),
     'service_manager' => array(
         'abstract_factories' => array(
+            // AbstractFactoryInterface implementations, or any PHP callbacks
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
             'Zend\Log\LoggerAbstractServiceFactory',
         ),
         'aliases' => array(
+            // Aliasing a FQCN to a service name, known Service name and upon another alias
             'translator' => 'MvcTranslator',
+        ),
+        'factories' => array(
+            // TODO
+            // 'ServiceNames' => names and instances of classes implementing FactoryInterface, or PHP callbacks
+            //'Access'     => 'Clips\Factory\Service\UserServiceFactory',
+            //'RegisterForm' => function ($serviceManager) {
+            //    $form = new Clips\Form\Register();
+            //    $form->setInputFilter($serviceManager->get('RegistrationInputFilter'));
+            //    return $form;
+            //},
+            //'Clips\Controller\Question' => 'Clips\Factory\Controller\QuestionControllerFactory',
+//            'userService' => function ($sm) {
+//                /** @noinspection PhpUndefinedMethodInspection */
+//                return new \Clips\Service\UserService($sm->get('clips'), $sm);
+//            },
+        ),
+        'invokables' => array(
+            // 'ServiceNames' => 'Clips\ClassNames'
+            'UserInputFilter' => 'SomeModule\InputFilter\User',
+        ),
+        'services' => array(
+            // 'ServiceNames' => 'Clips\Service\ServiceName()'
+            //'UserService' => new Clips\Service\UserService(),
+        ),
+        'shared' => array(
+            // Sharing rights: to Singleton or Not to Singleton
+            //'RegisterForm' => false,
         ),
     ),
     'translator' => array(
@@ -76,6 +190,17 @@ return array(
     'controllers' => array(
         'invokables' => array(
             'Clips\Controller\Index' => 'Clips\Controller\IndexController',
+            'Clips\Controller\Account' => 'Clips\Controller\AccountController',
+            'Clips\Controller\Question' => 'Clips\Controller\QuestionController',
+        ),
+        'factories' => array(
+            // TODO Factories and Repositories for Entity Injection
+            //'Clips\Controller\Question' => 'Clips\Factory\Form\QuestionFormFactory',
+        ),
+    ),
+    'form_elements' => array(
+        'factories' => array(
+            //'Clips\Form\QuestionForm' => 'Clips\Factory\Form\QuestionFormFactory',
         ),
     ),
     'view_manager' => array(
@@ -98,6 +223,22 @@ return array(
     'console' => array(
         'router' => array(
             'routes' => array(
+            ),
+        ),
+    ),
+    'doctrine' => array(
+        'driver' => array(
+            'Clips_driver' => array(
+                'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
+                'cache' => 'array',
+                'paths' => array(
+                    __DIR__ . '/../src/Clips/Entity'
+                )
+            ),
+            'orm_default' => array(
+                'drivers' => array(
+                    'Clips\Entity' =>  'Clips_driver'
+                ),
             ),
         ),
     ),
