@@ -191,7 +191,8 @@ return array(
         'invokables' => array(
             'Clips\Controller\Index' => 'Clips\Controller\IndexController',
             'Clips\Controller\Account' => 'Clips\Controller\AccountController',
-            'Clips\Controller\Question' => 'Clips\Controller\QuestionController',
+            'Clips\Controller\Section' => 'Clips\Controller\SectionController',
+            'Clips\Controller\Question' => 'Clips\Controller\QuestionController'
         ),
         'factories' => array(
             // TODO Factories and Repositories for Entity Injection
