@@ -1,265 +1,115 @@
 <?php
+/**
+ * CLiPs - WEBerStudio.net
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
+ */
 
-namespace Clips\Entity;
+namespace Clips\Controller;
+//
+//use Zend\Form\Annotation\AnnotationBuilder;
+//use Zend\Mvc\Controller\AbstractActionController;
+//use Zend\ServiceManager\ServiceManager;
+//use Zend\View\Model\ViewModel;
+use Clips\Entity\Questions;
+use Clips\Form\QuestionForm;
+//use Zend\Form\FormInterface;
 
-use Doctrine\ORM\Mapping as ORM;
+use Clips\Controller\ClipsAbstractController;
+use Clips\Form\SectionForm;
 
 /**
- * Questions
+ * Class QuestionController
  *
- * @ORM\Table(name="questions", indexes={@ORM\Index(name="fk_section_id", columns={"section_id"})})
- * @ORM\Entity(repositoryClass="Clips\Repository\QuestionsRepository")
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @category    Clips
+ * @package Clips\Controller
+ * @subpackage QuestionController
  */
-class Questions
+class QuestionController extends ClipsAbstractController
 {
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="id", type="integer", nullable=false)
-     * @ORM\Id
-     * @ORM\GeneratedValue(strategy="IDENTITY")
-     */
-    private $id;
+    /** @var Sections */
+    protected $sections = null;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="original_text", type="text", length=65535, nullable=false)
+     * @var QuestionForm
      */
-    private $originalText;
-
+    protected $form = null;
+//
+//    /**
+//     * @var \Zend\ServiceManager\ServiceManager
+//     */
+//    protected $serviceManager = null;
+//    /**
+//     * @var \Doctrine\ORM\EntityManager
+//     */
+//    protected $entityManager = null;
     /**
-     * @var string
-     *
-     * @ORM\Column(name="text", type="text", length=65535, nullable=false)
+     * @param array $criteria
+     * @param array $orderBy
+     * @param null $limit
+     * @param null $offset
+     * @return array|Sections
      */
-    private $text;
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="rating", type="integer", nullable=true)
-     */
-    private $rating;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="rating_text", type="string", length=10, nullable=false)
-     */
-    private $ratingText = '';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="age_min", type="integer", nullable=false)
-     */
-    private $ageMin = '4';
-
-    /**
-     * @var integer
-     *
-     * @ORM\Column(name="age_max", type="integer", nullable=false)
-     */
-    private $ageMax = '6';
-
-    /**
-     * @var \Clips\Entity\Sections
-     *
-     * @ORM\ManyToOne(targetEntity="Clips\Entity\Sections")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="section_id", referencedColumnName="id")
-     * })
-     */
-    private $section;
-
-
-    /**
-     * Get id
-     *
-     * @return integer
-     */
-    public function getId()
+    protected function getSectionCollection(array $criteria = [], array $orderBy = [], $limit = null, $offset = null) 
     {
-        return $this->id;
+        $this->sections = $this->repository('Clips\Entity\Sections')
+            ->findBy($criteria, $orderBy, $limit, $offset);
+        return $this->sections;
+    }
+    
+    public function indexAction()
+    {
+        parent::indexAction();
+//        $this->form = new QuestionForm($this->entityManager);
+        $this->getSectionCollection([],['reportOrder' => 'ASC']);
+
+        $this->form = new SectionForm('Section');
+//        $this->form->bind($this->sections[0]);
+        //$this->form->setHydrator(new DoctrineEntity($this->entityManager,'Clips\Entity\Sections'));
+
+        return $this->viewModel([
+            'form' => $this->form,
+            'sections' => $this->sections
+        ]);
+
     }
 
-    /**
-     * Set originalText
-     *
-     * @param string $originalText
-     *
-     * @return Questions
-     */
-    public function setOriginalText($originalText)
+    public function createAction()
     {
-        $this->originalText = $originalText;
-
-        return $this;
+        // GET /path/create
     }
 
-    /**
-     * Get originalText
-     *
-     * @return string
-     */
-    public function getOriginalText()
+    public function storeAction()
     {
-        return $this->originalText;
+        // POST /path
     }
 
-    /**
-     * Set text
-     *
-     * @param string $text
-     *
-     * @return Questions
-     */
-    public function setText($text)
+    public function showAction()
     {
-        $this->text = $text;
-
-        return $this;
+        // GET /path/{id}
     }
 
-    /**
-     * Get text
-     *
-     * @return string
-     */
-    public function getText()
+    public function editAction()
     {
-        return $this->text;
+        // GET /path/{id}/edit
     }
 
-    /**
-     * Set rating
-     *
-     * @param integer $rating
-     *
-     * @return Questions
-     */
-    public function setRating($rating)
+    public function updateAction()
     {
-        $this->rating = $rating;
-
-        return $this;
+        // PUT or PATCH /path/{id}/update
     }
 
-    /**
-     * Get rating
-     *
-     * @return integer
-     */
-    public function getRating()
+    public function destroyAction()
     {
-        return $this->rating;
+        // DELETE /path/{id}
     }
 
-    /**
-     * Set ratingText
-     *
-     * @param string $ratingText
-     *
-     * @return Questions
-     */
-    public function setRatingText($ratingText)
-    {
-        $this->ratingText = $ratingText;
 
-        return $this;
-    }
-
-    /**
-     * Get ratingText
-     *
-     * @return string
-     */
-    public function getRatingText()
-    {
-        return $this->ratingText;
-    }
-
-    /**
-     * Set ageMin
-     *
-     * @param integer $ageMin
-     *
-     * @return Questions
-     */
-    public function setAgeMin($ageMin)
-    {
-        $this->ageMin = $ageMin;
-
-        return $this;
-    }
-
-    /**
-     * Get ageMin
-     *
-     * @return integer
-     */
-    public function getAgeMin()
-    {
-        return $this->ageMin;
-    }
-
-    /**
-     * Set ageMax
-     *
-     * @param integer $ageMax
-     *
-     * @return Questions
-     */
-    public function setAgeMax($ageMax)
-    {
-        $this->ageMax = $ageMax;
-
-        return $this;
-    }
-
-    /**
-     * Get ageMax
-     *
-     * @return integer
-     */
-    public function getAgeMax()
-    {
-        return $this->ageMax;
-    }
-
-    /**
-     * Set section
-     *
-     * @param \Clips\Entity\Sections $section
-     *
-     * @return Questions
-     */
-    public function setSection(\Clips\Entity\Sections $section = null)
-    {
-        $this->section = $section;
-
-        return $this;
-    }
-
-    /**
-     * Get section
-     *
-     * @return \Clips\Entity\Sections
-     */
-    public function getSection()
-    {
-        return $this->section;
-    }
-
-    /**
-     * Return named property
-     * 
-     * @param $property
-     * @return mixed
-     */
-    public function get($property)
-    {
-        return $this->$property;
-    }
 }

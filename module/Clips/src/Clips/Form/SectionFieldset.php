@@ -99,6 +99,12 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'data-json' => '{}',
             )
         ));
+
+
+        return;
+
+
+        
         $this->add(array(
             'name' => 'age_max',
             'options' => array(
