@@ -7,7 +7,7 @@
  * @copyright Copyright (c) 2017
  * @license   All rights reserved
  */
-
+$developmentEnvironment = (isset($_SERVER['APPLICATION_ENV']) && $_SERVER['APPLICATION_ENV'] == 'development')? true: false;
 return array(
     'router' => array(
         'routes' => array(
@@ -227,7 +227,10 @@ return array(
             ),
         ),
     ),
+    // DOCTRINE ORM SETTINGS [With tons of comments because it does not hurt performance, and improves yours]
+    // So array_merge($that, $brain) in your Corpus Callosum and pray it survives your Hippocampus.
     'doctrine' => array(
+        // Metadata Mapping driver configuration
         'driver' => array(
             'Clips_driver' => array(
                 'class' => 'Doctrine\ORM\Mapping\Driver\AnnotationDriver',
@@ -236,11 +239,93 @@ return array(
                     __DIR__ . '/../src/Clips/Entity'
                 )
             ),
+            // Configuration for service `doctrine.driver.orm_default` service
             'orm_default' => array(
+                // By default, the ORM module uses a driver chain. This allows multiple
+                // modules to define their own entities. Keeping it individualistic, just sayin'.
+                'class'   => 'Doctrine\ORM\Mapping\Driver\DriverChain',
+                // Map of driver names to be used within this driver chain, indexed by
+                // entity namespace
                 'drivers' => array(
                     'Clips\Entity' =>  'Clips_driver'
                 ),
             ),
         ),
+        // See http://docs.doctrine-project.org/en/latest/reference/configuration.html
+        'configuration' => array(
+            // Configuration for service `doctrine.configuration.orm_default` service
+            'orm_default' => array(
+
+                // CACHE
+                // All CACHE services can be found as `doctrine.cache.$thisSetting` unless otherwise noted
+                // metadata cache instance to use. The retrieved service name will
+                'metadata_cache' => 'array',
+                // DQL queries parsing cache instance to use. The retrieved service
+                // name will be `doctrine.cache.$thisSetting`
+                'query_cache' => 'array',
+                // ResultSet cache to use.
+                'result_cache' => 'array',
+                // Hydration cache to use.
+                'hydration_cache' => 'array',
+                // Second level cache configuration (see doc to learn about configuration)
+                'second_level_cache' => array(),
+
+                // DRIVER
+                // Mapping DRIVER instance to use, here the default chained driver.
+                // The retrieved service name will be `doctrine.driver.$thisSetting`
+                'driver'            => 'orm_default',
+
+                // PROXIES
+                // Generate PROXIES automatically (turn off for production)
+                'generate_proxies' => $developmentEnvironment,
+                // directory where proxies will be stored. By default, this is in
+                // the `data` directory of your application
+                // 'proxy_dir'         => 'data/DoctrineORMModule/Proxy',
+                // namespace for generated proxy classes
+                'proxy_namespace'   => 'DoctrineORMModule\Proxy',
+
+                // FILTERS
+                // SQL filters. See http://docs.doctrine-project.org/en/latest/reference/filters.html
+                'filters'           => array(),
+
+                // Custom DQL functions.
+                // You can grab common MySQL ones at https://github.com/beberlei/DoctrineExtensions
+                // Further docs at http://docs.doctrine-project.org/en/latest/cookbook/dql-user-defined-functions.html
+                'datetime_functions' => array(),
+                'string_functions' => array(),
+                // Declare Custom Doctrine Query Language (DQL) Functions
+                'numeric_functions' => array(
+                    //'ROUND' => 'Path\To\My\Query\round'
+                ),
+
+                // Declare Custom Types
+                'types' => array(
+                    //'GEODETIC' => 'Modulename\Types\Mercator',
+                    //'KedWeber' => 'Uniqueunicoded'
+                ),
+                // Set a Default Repository
+                //'default_repository_class_name' => 'SomeCustomRepository'
+            ),
+        ),
+        'connection' => array(
+            'orm_default' => array(
+                // Register Type Mappings
+                'doctrine_type_mappings' => array(
+                    // 'ENUM' => 'string' //Doctrine Type Mapping entry.
+                ),
+                // Set a Doctrine type comment (DC2Type:myType)
+                'doctrineCommentedTypes' => array(
+                    //'KedWeber'
+                ),
+            ),
+        ),
+        'entity_resolver' => array(
+            'orm_default' => array(
+                //Define Relationships with Abstract Classes and Interfaces (ResolveTargetEntityListener)
+                'resolvers' => array(
+                    //'Clips\\InvoiceModule\\Model\\InvoiceSubjectInterface', 'Clips\\CustomerModule\\Entity\\Customer'
+                )
+            )
+        )
     ),
 );

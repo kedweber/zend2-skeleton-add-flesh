@@ -14,7 +14,7 @@ echo $this->form()->openTag($f); ?>
 <?php 
 //echo $this->formRow($f->get('title') ); 
 //echo $this->formRow()->get('title');
-var_dump($this->form->getElements());
+//var_dump($this->form->getElements());
 ?>
 2
 <?php // echo $this->formLabel($f->get('title')); ?>
@@ -22,7 +22,7 @@ var_dump($this->form->getElements());
 <?php // echo $this->formLabel($f->get('description')); ?>
 <?php //echo $this->formLabel($f->get('age_min')); ?>
 3
-<?php // echo $this->formCollection($this->form); ?>
+<?php echo $this->formCollection($this->form); ?>
 <?php echo $this->form()->closeTag(); ?>
         </div>
     </div>

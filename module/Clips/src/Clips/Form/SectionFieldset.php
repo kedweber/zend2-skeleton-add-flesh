@@ -17,6 +17,10 @@ use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
 use Doctrine\Common\Persistence\ObjectManager;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
+use DoctrineModule\Form\Element\ObjectMultiCheckbox;
+use DoctrineModule\Form\Element\ObjectRadio;
+use DoctrineModule\Form\Element\ObjectSelect;
+
 class SectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
     public function __construct($name = 'section', ObjectManager $nameOrObj)

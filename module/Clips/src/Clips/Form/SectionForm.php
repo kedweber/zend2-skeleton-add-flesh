@@ -23,14 +23,16 @@ use Clips\Form\SectionFieldset;
  */
 class SectionForm extends Form
 {
-    public function __construct(ObjectManager $name = null)
+    public function __construct(ObjectManager $objectManager, $name = null)
     {
         //TODO  test $name for ObjectManager
         parent::__construct('section');
-        $fieldset = new SectionFieldset('section',$name);
-        $fieldset->setUseAsBaseFieldset(true);
-        $this->add($fieldset);
-//print_r($fieldset);die();
+//        $fieldset = new SectionFieldset($name, 'section');
+        //$fieldset = new SectionFieldset('section',$name);
+//        $fieldset->bindValues($name);
+//        $fieldset->setUseAsBaseFieldset(true);
+        //$this->add($fieldset);
+//print_r($fieldset->getElements());die();
         $this->add(array(
             'name' => 'submit',
             'type'  => 'Zend\Form\Element\Submit',
@@ -40,7 +42,115 @@ class SectionForm extends Form
             ),
         ));
 
-return; // under is without Doctrine
+        $this->add(array(
+            'name' => 'id',
+            'type' => 'Zend\Form\Element\Hidden',
+//            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+            'options' => array(
+                'label' => 'Choose a MyEntity',
+                'object_manager' => $objectManager,
+                'target_class' => 'Namespace\Entity\Section',
+                'property' => 'id'
+            ),
+            'attributes' => array(
+                'type' => 'hidden',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => '',
+                'data-json' => '{}'
+            )
+        ));
+
+        $this->add(array(
+            'name' => 'report_id',
+            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+            'options' => array(
+                'label' => 'Report Id',
+                'object_manager' => $objectManager,
+                'target_class' => 'Namespace\Entity\Section',
+                'property' => 'report_id'
+            ),
+            'attributes' => array(
+                'type' => 'hidden',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => '',
+                'data-json' => '{}',
+            )
+        ));
+        $this->add(array(
+            'name' => 'title',
+            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+            'options' => array(
+                'label' => 'Section Title',
+                'object_manager' => $objectManager,
+                'target_class' => 'Namespace\Entity\Section',
+                'property' => 'title'
+            ),
+            'attributes' => array(
+                //'type' => 'text',
+                'type' => 'Zend\Form\Element\Text',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => 'Section Title',
+                'required' => 'required',
+                'data-json' => '{}',
+            )
+        ));
+        $this->add(array(
+            'name' => 'description',
+            'options' => array(
+                'label' => 'Section Description'
+            ),
+            'attributes' => array(
+                //'type' => 'text',
+                'type' => 'Zend\Form\Element\TextArea',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => 'Section Title',
+                'data-json' => '{}',
+            )
+        ));
+        // TODO SELECT
+        $this->add(array(
+            'name' => 'age_min',
+            'options' => array(
+                'label' => 'Minimum Age' //TODO use translations
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => 'Min',
+                'required' => 'required',
+                'data-json' => '{}',
+            )
+        ));
+        $this->add(array(
+            'name' => 'age_max',
+            'options' => array(
+                'label' => 'Maximum Age' //TODO use translations
+            ),
+            'attributes' => array(
+                'type' => 'text',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => 'Max',
+                'required' => 'required',
+                'data-json' => '{}',
+            )
+        ));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        return; // under is without Doctrine
         $this->setAttribute('method', 'post')
             ->setHydrator(new ClassMethods())
             ->setInputFilter(new InputFilter());
