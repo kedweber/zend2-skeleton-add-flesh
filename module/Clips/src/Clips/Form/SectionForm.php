@@ -23,11 +23,11 @@ use Clips\Form\SectionFieldset;
  */
 class SectionForm extends Form
 {
-    public function __construct($name = null)
+    public function __construct(ObjectManager $name = null)
     {
         //TODO  test $name for ObjectManager
         parent::__construct('section');
-        $fieldset = new SectionFieldset($name);
+        $fieldset = new SectionFieldset('section',$name);
         $fieldset->setUseAsBaseFieldset(true);
         $this->add($fieldset);
 //print_r($fieldset);die();

@@ -19,15 +19,14 @@ use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class SectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    public function __construct($nameOrObj = 'section')
+    public function __construct($name = 'section', ObjectManager $nameOrObj)
     {
-        parent::__construct($nameOrObj);
+        parent::__construct($name);
 
 //        $em = Registry::get('entityManager');
 //        $this->setHydrator(new DoctrineEntity($em))
 //            ->setObject(new User());
 //        $this->setLabel('Post');
-        $name = 'section';
 
         $this->add(array(
             'name' => 'id',
