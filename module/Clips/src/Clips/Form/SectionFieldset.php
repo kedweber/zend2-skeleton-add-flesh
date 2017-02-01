@@ -14,21 +14,24 @@ use Clips\Entity\Section;
 use Zend\Form\Fieldset;
 use Zend\InputFilter\InputFilterProviderInterface;
 use DoctrineORMModule\Stdlib\Hydrator\DoctrineEntity;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
 class SectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    public function __construct($name = 'section')
+    public function __construct($nameOrObj = 'section')
     {
-        parent::__construct($name);
+        parent::__construct($nameOrObj);
 
 //        $em = Registry::get('entityManager');
 //        $this->setHydrator(new DoctrineEntity($em))
 //            ->setObject(new User());
 //        $this->setLabel('Post');
-
+        $name = 'section';
 
         $this->add(array(
             'name' => 'id',
+            'type' => 'Zend\Form\Element\Hidden',
             'attributes' => array(
                 'type' => 'hidden',
                 'class' => 'clips-form clips-'.$name,
@@ -36,6 +39,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'data-json' => '{}',
             )
         ));
+
         $this->add(array(
             'name' => 'report_id',
             'attributes' => array(
@@ -101,23 +105,19 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
         ));
 
 
-        return;
-
-
-        
-        $this->add(array(
-            'name' => 'age_max',
-            'options' => array(
-                'label' => 'Ordinal Position in Report' //TODO use translations
-            ),
-            'attributes' => array(
-                'type' => 'select',
-                'class' => 'clips-form clips-'.$name,
-                'placeholder' => 'Max',
-                'required' => 'required',
-                'data-json' => '{}',
-            )
-        ));
+//        $this->add(array(
+//            'name' => 'age_max',
+//            'options' => array(
+//                'label' => 'Ordinal Position in Report' //TODO use translations
+//            ),
+//            'attributes' => array(
+//                'type' => 'select',
+//                'class' => 'clips-form clips-'.$name,
+//                'placeholder' => 'Max',
+//                'required' => 'required',
+//                'data-json' => '{}',
+//            )
+//        ));
 
     }
     /**

@@ -1,14 +1,29 @@
+
 <hr/>
 <div class="container">
     <div class="row">
         <div class="col-24">Form:</div>
         <div class="col-24">
 <?php
-echo $this->form()->openTag($this->form);
-//formatted form elements
-echo $this->formCollection($this->form);
-echo $this->form()->closeTag();
+ //var_dump($this->form); 
+$f = $this->form;
+$f->setAttribute('action', $this->url('admin'));
+//$f->prepare();
+echo $this->form()->openTag($f); ?> 
+1
+<?php 
+//echo $this->formRow($f->get('title') ); 
+//echo $this->formRow()->get('title');
+var_dump($this->form->getElements());
 ?>
+2
+<?php // echo $this->formLabel($f->get('title')); ?>
+
+<?php // echo $this->formLabel($f->get('description')); ?>
+<?php //echo $this->formLabel($f->get('age_min')); ?>
+3
+<?php // echo $this->formCollection($this->form); ?>
+<?php echo $this->form()->closeTag(); ?>
         </div>
     </div>
 

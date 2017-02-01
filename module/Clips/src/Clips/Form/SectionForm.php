@@ -12,6 +12,9 @@ namespace Clips\Form;
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
+use Doctrine\Common\Persistence\ObjectManager;
+use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+use Clips\Form\SectionFieldset;
 
 /**
  * Class SectionForm
@@ -22,8 +25,22 @@ class SectionForm extends Form
 {
     public function __construct($name = null)
     {
+        //TODO  test $name for ObjectManager
         parent::__construct('section');
+        $fieldset = new SectionFieldset($name);
+        $fieldset->setUseAsBaseFieldset(true);
+        $this->add($fieldset);
+//print_r($fieldset);die();
+        $this->add(array(
+            'name' => 'submit',
+            'type'  => 'Zend\Form\Element\Submit',
+            'attributes' => array(
+                'value' => 'Go',
+                'id' => 'submitbutton',
+            ),
+        ));
 
+return; // under is without Doctrine
         $this->setAttribute('method', 'post')
             ->setHydrator(new ClassMethods())
             ->setInputFilter(new InputFilter());

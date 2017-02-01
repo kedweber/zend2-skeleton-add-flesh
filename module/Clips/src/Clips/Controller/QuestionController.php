@@ -68,9 +68,11 @@ class QuestionController extends ClipsAbstractController
     {
         parent::indexAction();
 //        $this->form = new QuestionForm($this->entityManager);
-        $this->getSectionCollection([],['reportOrder' => 'ASC']);
+        $this->getSectionCollection([],['reportOrder' => 'ASC'],1);
 
-        $this->form = new SectionForm('Section');
+        $this->form = new SectionForm($this->entityManager);
+        // TODO remove below when Doctrine Hydrator works
+        // $this->form = new SectionForm('Section');
 //        $this->form->bind($this->sections[0]);
         //$this->form->setHydrator(new DoctrineEntity($this->entityManager,'Clips\Entity\Sections'));
 
