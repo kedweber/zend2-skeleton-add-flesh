@@ -11,6 +11,7 @@ namespace Clips;
 
 use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
+use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 
 class Module
 {
@@ -33,6 +34,24 @@ class Module
                 'namespaces' => array(
                     __NAMESPACE__ => __DIR__ . '/src/' . __NAMESPACE__,
                 ),
+            ),
+        );
+    }
+    public function getFormElementConfig()
+    {
+        return array(
+            'invokables' => array(
+                'MyForm' => 'Clips\Form\SectionForm',
+            ),
+            'initializers' => array(
+                'ObjectManagerInitializer' => function ($element, $formElements) {
+                    if ($element instanceof ObjectManagerAwareInterface) {
+                        $services      = $formElements->getServiceLocator();
+                        $entityManager = $services->get('Doctrine\ORM\EntityManager');
+
+                        $element->setObjectManager($entityManager);
+                    }
+                },
             ),
         );
     }

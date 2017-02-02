@@ -9,24 +9,33 @@
  */
 
 namespace Clips\Form;
+
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
 use Doctrine\Common\Persistence\ObjectManager;
+//use Doctrine\Common\Persistence\ObjectManagerAware;
+//use DoctrineModule\Persistence\ObjectManagerAwareInterface;
+// Replaces depricated DoctrineEntity
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
+//use DoctrineORMModule\Form\Element\DoctrineEntity;
+
+
 use Clips\Form\SectionFieldset;
+use Clips\Form\ClipsAbstractForm;
 
 /**
  * Class SectionForm
  * @package Clips\Form
  * @subpackage SectionForm
  */
-class SectionForm extends Form
+class SectionForm extends ClipsAbstractForm
 {
     public function __construct(ObjectManager $objectManager, $name = null)
     {
         //TODO  test $name for ObjectManager
-        parent::__construct('section');
+        parent::__construct($objectManager, $name = null);
+//        parent::__construct('section');
 //        $fieldset = new SectionFieldset($name, 'section');
         //$fieldset = new SectionFieldset('section',$name);
 //        $fieldset->bindValues($name);
@@ -49,14 +58,14 @@ class SectionForm extends Form
             'options' => array(
                 'label' => 'Choose a MyEntity',
                 'object_manager' => $objectManager,
-                'target_class' => 'Namespace\Entity\Section',
+                'target_class' => 'Clips\Entity\Sections',
                 'property' => 'id'
             ),
             'attributes' => array(
                 'type' => 'hidden',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => '',
-                'data-json' => '{}'
+                'data-json' => ''
             )
         ));
 
@@ -66,14 +75,14 @@ class SectionForm extends Form
             'options' => array(
                 'label' => 'Report Id',
                 'object_manager' => $objectManager,
-                'target_class' => 'Namespace\Entity\Section',
+                'target_class' => 'Clips\Entity\Sections',
                 'property' => 'report_id'
             ),
             'attributes' => array(
                 'type' => 'hidden',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => '',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         $this->add(array(
@@ -82,7 +91,7 @@ class SectionForm extends Form
             'options' => array(
                 'label' => 'Section Title',
                 'object_manager' => $objectManager,
-                'target_class' => 'Namespace\Entity\Section',
+                'target_class' => 'Clips\Entity\Sections',
                 'property' => 'title'
             ),
             'attributes' => array(
@@ -91,7 +100,7 @@ class SectionForm extends Form
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Section Title',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         $this->add(array(
@@ -104,7 +113,7 @@ class SectionForm extends Form
                 'type' => 'Zend\Form\Element\TextArea',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Section Title',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         // TODO SELECT
@@ -118,7 +127,7 @@ class SectionForm extends Form
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Min',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         $this->add(array(
@@ -131,7 +140,7 @@ class SectionForm extends Form
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Max',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
 
@@ -141,8 +150,8 @@ class SectionForm extends Form
 
 
 
-
-
+        
+//print_r($h, false);die();
 
 
 
