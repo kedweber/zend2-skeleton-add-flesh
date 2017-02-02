@@ -41,7 +41,7 @@ class Module
     {
         return array(
             'invokables' => array(
-                'MyForm' => 'Clips\Form\SectionForm',
+                'SectionForm' => 'Clips\Form\SectionForm',
             ),
             'initializers' => array(
                 'ObjectManagerInitializer' => function ($element, $formElements) {

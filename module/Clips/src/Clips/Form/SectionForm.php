@@ -13,7 +13,7 @@ namespace Clips\Form;
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
-use Doctrine\Common\Persistence\ObjectManager;
+//use Doctrine\Common\Persistence\ObjectManager;
 //use Doctrine\Common\Persistence\ObjectManagerAware;
 //use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 // Replaces depricated DoctrineEntity
