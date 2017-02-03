@@ -45,6 +45,8 @@ class Module
             ),
             'initializers' => array(
                 'ObjectManagerInitializer' => function ($element, $formElements) {
+                    echo "Module.getFormElementConfig()\n";
+                    print_r($element, False);die();
                     if ($element instanceof ObjectManagerAwareInterface) {
                         $services      = $formElements->getServiceLocator();
                         $entityManager = $services->get('Doctrine\ORM\EntityManager');

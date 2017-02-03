@@ -1,0 +1,30 @@
+<?php
+$f = $this->form;
+$f = $this->fieldSetz;
+?>
+<div class="row">
+    <div class="form-group col-xs-24 col-sm-20">
+        <label for="title">Choose a Section of the Report</label>
+        <?php echo $this->formSelect($f->get('id')) ?>
+    </div>
+    <div class="form-group col-xs-24 col-sm-4 pull-right">
+        <label for="">&nbsp;</label>
+        <button class="btn btn-clips-100">Navigate</button>
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-xs-24 col-sm-20">
+        <label for="title"><?php echo $this->formLabel($f->get('title')) ?></label>
+        <?php echo $this->formInput($f->get('title')) ?>
+        <label for="description"><?php echo $this->formLabel($f->get('description')) ?></label>
+        <?php echo $this->formTextarea($f->get('description')) ?>
+    </div>
+    <div class="form-group col-xs-24 col-sm-4 pull-right">
+        <label for="title"><?php echo $this->formLabel($f->get('ageMin')) ?></label>
+        <?php echo $this->formInput($f->get('ageMin')) ?>
+        <label for="title"><?php echo $this->formLabel($f->get('ageMax')) ?></label>
+        <?php echo $this->formInput($f->get('ageMax')) ?>
+        <button class="btn btn-clips-100">Submit</button>
+    </div>
+</div>

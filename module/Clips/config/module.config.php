@@ -166,7 +166,7 @@ return array(
         ),
         'invokables' => array(
             // 'ServiceNames' => 'Clips\ClassNames'
-            'UserInputFilter' => 'SomeModule\InputFilter\User',
+            // 'UserInputFilter' => 'SomeModule\InputFilter\User',
         ),
         'services' => array(
             // 'ServiceNames' => 'Clips\Service\ServiceName()'

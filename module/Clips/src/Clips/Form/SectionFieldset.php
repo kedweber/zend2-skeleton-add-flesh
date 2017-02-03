@@ -23,7 +23,24 @@ use DoctrineModule\Form\Element\ObjectSelect;
 
 class SectionFieldset extends Fieldset implements InputFilterProviderInterface
 {
-    public function __construct($name = 'section', ObjectManager $nameOrObj)
+
+    private function hydrateHelper(ObjectManager $objectManager)
+    {
+        $hydrator = new DoctrineHydrator($entityManager);
+//        $appointment = new Appointment();
+//        $data = [
+//            'time' => '1357057334',
+//        ];
+//
+//        $appointment = $hydrator->hydrate($data, $appointment);
+    }
+
+    /**
+     * SectionFieldset constructor.
+     * @param ObjectManager $objectManager
+     * @param string $name
+     */
+    public function __construct(ObjectManager $objectManager, $name)
     {
         parent::__construct($name);
 
@@ -39,7 +56,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'hidden',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => '',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
 
@@ -49,7 +66,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'hidden',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => '',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         $this->add(array(
@@ -63,8 +80,44 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Section Title',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
+        ));
+        // SECTION TITLE LIST
+        $this->add(array(
+            'name' => 'title',
+            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+            'options' => array(
+                'label' => 'Section Title',
+                'object_manager' => $objectManager,
+                'target_class' => 'Clips\Entity\Sections',
+                'property' => 'title',
+                'find_method' => array(
+                    'name'   => 'findBy',
+                    'params' => array(
+                        'criteria' => [],
+                        // Use key 'orderBy' if using ORM
+                        'orderBy'  => ['reportOrder' => 'ASC'],
+
+                        // Use key 'sort' if using ODM
+                        'sort'  => ['reportOrder' => 'ASC'],
+                    ),
+                ),
+                'option_attributes' => array(
+                    'class' => 'section-list-item',
+                    'data-id' => function (\Clips\Entity\Sections $entity) {
+                        return $entity->getId();
+                    }
+                )
+            ),
+//            'attributes' => array(
+//                //'type' => 'text',
+//                'type' => 'Zend\Form\Element\Text',
+//                'class' => 'clips-form clips-'.$name,
+//                'placeholder' => 'Section Title',
+//                'required' => 'required',
+//                'data-json' => '',
+//            )
         ));
         $this->add(array(
             'name' => 'description',
@@ -76,7 +129,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'type' => 'Zend\Form\Element\TextArea',
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Section Title',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         // TODO SELECT
@@ -90,7 +143,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Min',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
         $this->add(array(
@@ -103,7 +156,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
                 'class' => 'clips-form clips-'.$name,
                 'placeholder' => 'Max',
                 'required' => 'required',
-                'data-json' => '{}',
+                'data-json' => '',
             )
         ));
 
@@ -118,7 +171,7 @@ class SectionFieldset extends Fieldset implements InputFilterProviderInterface
 //                'class' => 'clips-form clips-'.$name,
 //                'placeholder' => 'Max',
 //                'required' => 'required',
-//                'data-json' => '{}',
+//                'data-json' => '',
 //            )
 //        ));
 

@@ -13,7 +13,7 @@ namespace Clips\Form;
 use Zend\Form\Form;
 use Zend\InputFilter\InputFilter;
 use Zend\Stdlib\Hydrator\ClassMethods;
-//use Doctrine\Common\Persistence\ObjectManager;
+use Doctrine\Common\Persistence\ObjectManager;
 //use Doctrine\Common\Persistence\ObjectManagerAware;
 //use DoctrineModule\Persistence\ObjectManagerAwareInterface;
 // Replaces depricated DoctrineEntity
@@ -31,17 +31,28 @@ use Clips\Form\ClipsAbstractForm;
  */
 class SectionForm extends ClipsAbstractForm
 {
-    public function __construct(ObjectManager $objectManager, $name = null)
+    /**
+     * SectionForm constructor.
+     * @param ObjectManager $objectManager
+     * @param string $name
+     */
+    public function __construct(ObjectManager $objectManager, $name)
     {
         //TODO  test $name for ObjectManager
-        parent::__construct($objectManager, $name = null);
-//        parent::__construct('section');
-//        $fieldset = new SectionFieldset($name, 'section');
-        //$fieldset = new SectionFieldset('section',$name);
-//        $fieldset->bindValues($name);
+        // Hydrator set in ClipsAbstractForm
+        parent::__construct($objectManager, $name);
+
+
+        $fieldset = new SectionFieldset($objectManager, $name);
 //        $fieldset->setUseAsBaseFieldset(true);
-        //$this->add($fieldset);
-//print_r($fieldset->getElements());die();
+//        $this->bind($fieldset->elements);
+        $this->add($fieldset);
+//        $fieldset->setObject(new ProductEntity())
+//            ->setHydrator(new ClassMethods());
+//        $this->getHydrator()->hydrate($this->elements, $this->sections);
+        
+
+
         $this->add(array(
             'name' => 'submit',
             'type'  => 'Zend\Form\Element\Submit',
@@ -76,7 +87,7 @@ class SectionForm extends ClipsAbstractForm
                 'label' => 'Report Id',
                 'object_manager' => $objectManager,
                 'target_class' => 'Clips\Entity\Sections',
-                'property' => 'report_id'
+                'property' => 'reportId'
             ),
             'attributes' => array(
                 'type' => 'hidden',
@@ -85,6 +96,123 @@ class SectionForm extends ClipsAbstractForm
                 'data-json' => '',
             )
         ));
+
+        // EDIT
+//        $this->add(array(
+//            'name' => 'title',
+//            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+//            'options' => array(
+//                'label' => 'Section Title',
+//                'object_manager' => $this->getObjectManager(),
+//                'target_class' => 'Clips\Entity\Sections',
+//                'property' => 'title'
+//            ),
+//        //            'attributes' => array(
+//        //                //'type' => 'text',
+//        //                'type' => 'Zend\Form\Element\Text',
+//        //                'class' => 'clips-form clips-'.$name,
+//        //                'placeholder' => 'Section Title',
+//        //                'required' => 'required',
+//        //                'data-json' => '',
+//        //            )
+//        ));
+        $this->add(array(
+            'name' => 'title',
+            'type' => 'Zend\Form\Element\Text',
+            'object_manager' => $objectManager,
+            'target_class' => 'Clips\Entity\Sections',
+//
+//            'options' => array(
+//                'label' => 'Section Title',
+//                'object_manager' => $objectManager,
+//                'target_class' => 'Clips\Entity\Sections',
+//                'property' => 'title',
+//
+//            ),
+            'attributes' => array(
+                //'type' => 'text',
+//                'type' => 'Zend\Form\Element\Text',
+                'class' => 'clips-form clips-'.$name,
+                'placeholder' => 'Section Title',
+                'required' => 'required',
+                'data-json' => '',
+//                'data-id' => function (\Clips\Entity\Sections $entity) {
+//                    return $entity->getId();
+//                },
+            )
+        ));
+        // http://stackoverflow.com/questions/14867567/how-to-create-custom-form-elements-that-extend-doctrine-entity-select-elements
+        // SECTION TITLE LIST
+        $this->add(array(
+            'name' => 'id',
+            'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+            'attributes' => [
+                'class' => 'section-list-item selectpicker',
+                'data-live-search' => 'true',
+            ],
+            'options' => array(
+                'label' => 'Section Title',
+                'object_manager' => $this->getObjectManager(),
+                'target_class' => 'Clips\Entity\Sections',
+                'property' => 'title',
+                'empty_option' => '- Undecided - ',
+                'find_method' => array(
+                    'name'   => 'findBy',
+                    'params' => array(
+                        'criteria' => [],
+                        // Use key 'orderBy' if using ORM
+                        'orderBy'  => ['reportOrder' => 'ASC'],
+                        // Use key 'sort' if using ODM (viz. MongoDB
+                        'sort'  => ['reportOrder' => 'ASC'],
+                    ),
+                ),
+//                'options' => array(
+//                    'empty_option' => 'Seleccione localidad...'
+//                ),
+                'option_attributes' => array(
+                    'data-id' => function (\Clips\Entity\Sections $entity) {
+                        return $entity->getId();
+                    },
+                    'data-tokens' => function (\Clips\Entity\Sections $entity) {
+                        return $entity->getTitle();
+                    },
+                    'data-blubber' => function ($entity) {
+                        return get_class($entity);
+                        return $entity->getId();
+                    },
+                )
+            ),
+//            'attributes' => array(
+//                //'type' => 'text',
+//                'type' => 'Zend\Form\Element\Text',
+//                'class' => 'clips-form clips-'.$name,
+//                'placeholder' => 'Section Title',
+//                'required' => 'required',
+//                'data-json' => '',
+//            )
+        ));
+
+//        $this->add(
+//            array(
+//                'name' => 'user_id',
+//                'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
+//                'options' => array(
+//                    'label'          => 'User',
+//                    'object_manager' => $this->getObjectManager(),
+//                    'target_class'   => 'Application\Entity\User',
+//                    'property'       => 'name',
+//                    'find_method' => array(
+//                        'name'   => 'findBy',
+//                        'params' => array(
+//                            'criteria' => array('is_deleted' => 0),
+//                            'orderBy'  => array('name' => 'ASC'),
+//                        ),
+//                    ),
+//                ),
+//            ),
+//        );
+
+
         $this->add(array(
             'name' => 'title',
             'type' => 'DoctrineORMModule\Form\Element\DoctrineEntity',
@@ -103,6 +231,9 @@ class SectionForm extends ClipsAbstractForm
                 'data-json' => '',
             )
         ));
+
+
+
         $this->add(array(
             'name' => 'description',
             'options' => array(
@@ -111,14 +242,15 @@ class SectionForm extends ClipsAbstractForm
             'attributes' => array(
                 //'type' => 'text',
                 'type' => 'Zend\Form\Element\TextArea',
+                'id' => 'fuckit',
                 'class' => 'clips-form clips-'.$name,
-                'placeholder' => 'Section Title',
+                'placeholder' => 'Describe what this section in detail.',
                 'data-json' => '',
             )
         ));
         // TODO SELECT
         $this->add(array(
-            'name' => 'age_min',
+            'name' => 'ageMin',
             'options' => array(
                 'label' => 'Minimum Age' //TODO use translations
             ),
@@ -131,7 +263,7 @@ class SectionForm extends ClipsAbstractForm
             )
         ));
         $this->add(array(
-            'name' => 'age_max',
+            'name' => 'ageMax',
             'options' => array(
                 'label' => 'Maximum Age' //TODO use translations
             ),
@@ -170,5 +302,14 @@ class SectionForm extends ClipsAbstractForm
                 'use_as_base_fieldset' => true
             )
         ));
+    }
+
+
+    public function hydrateEntity($entity)
+    {
+        $hydrator = new DoctrineHydrator($this->entityManager, get_class($entity));
+
+        $this->setHydrator($hydrator);
+        $results = $this->form->bind($entity);
     }
 }

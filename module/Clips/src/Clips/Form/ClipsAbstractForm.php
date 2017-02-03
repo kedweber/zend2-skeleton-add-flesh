@@ -46,7 +46,10 @@ abstract class ClipsAbstractForm extends ZendForm implements ObjectManagerAwareI
 
     public function __construct(ObjectManager $objectManager, $name = null)
     {
+        parent::__construct($name);
         $this->setObjectManager($objectManager);
-        $h = $this->setHydrator(new DoctrineHydrator($objectManager,'\Clips\Entity\Sections'));
+        //Zend\Stdlib\Hydrator\AbstractHydrator
+        //$this->setHydrator(new DoctrineHydrator($objectManager,'\Clips\Entity\Sections'));
+        $this->setHydrator(new DoctrineHydrator($objectManager, $byValue = true ));
     }
 }

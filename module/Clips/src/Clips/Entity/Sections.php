@@ -4,6 +4,7 @@ namespace Clips\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\ORM\EntityManager;
 use Clips\Entity\Questions;
 
 /**
@@ -12,7 +13,7 @@ use Clips\Entity\Questions;
  * @ORM\Table(name="sections")
  * @ORM\Entity
  */
-class Sections
+class Sections extends ClipsAbstractEntity
 {
     /**
      * @var integer
@@ -72,7 +73,13 @@ class Sections
      */
     private $questions;
 
-    public function __construct() {
+    public function __construct($that = [])
+    {
+//        var_dump(get_class($that)); die();
+        if ($that instanceof \Doctrine\ORM\EntityManager) {
+//        var_dump(get_class($this));
+//        die();
+        }
         $this->questions = new ArrayCollection();
     }
 
@@ -242,5 +249,5 @@ class Sections
         return $this->$property;
     }
 
-    
+
 }
