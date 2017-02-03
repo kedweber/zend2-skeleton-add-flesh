@@ -1,6 +1,7 @@
 
 # [The eCLIPS Project](https://kedweber.github.io/zend2-skeleton-add-flesh) 
 
+
 ## ~ Early Childhood Learning Interactive Profile System
 
 Teachers are charged with carrying the most precious burden of shaping the future on an astoundingly low budget. Among the many daily tasks an important and personal assessment of the child's development is to be consolidated into a profile. The primary purpose of the profile is to inform the parents of their child's developmental strengths and weaknesses. 
@@ -11,7 +12,9 @@ CLIPS will offer an outline of considerations that should be covered, while affo
 
 Every profile requires adding objects (work samples and observation records) to indicate work done in real-life situations with authentic problem solving. CLIPS will need to allow for inclusion of such custom objects.
 
-# NOTES:
+![Overview of a Report's Structure](https://kedweber.github.io/zend2-skeleton-add-flesh/res/img/use_case_report_structure_general.jpg)
+
+# Tecnichal Goals:
 
 # Initial Goals: 
 This is the formative phase of development, and even the code project name CLIPS is being reconsidered. In this phase, we are trying to map out the flow of the 'business logic' (viz. use cases). The immensity of all topics to cover is dauntingly large, and so to lay down the program's structure, we will focus first on 'Early childhood development', before adding additional groups.
