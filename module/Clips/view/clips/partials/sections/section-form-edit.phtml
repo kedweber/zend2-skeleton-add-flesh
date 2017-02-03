@@ -8,11 +8,12 @@ $f = $this->fieldSetz;
         <?php echo $this->formSelect($f->get('id')) ?>
     </div>
     <div class="form-group col-xs-24 col-sm-4 pull-right">
-        <label for="">&nbsp;</label>
+        <label for="" class="hidden-xs ">&nbsp;</label>
+        <?php echo $this->url('admin').'/section' ?>
         <button class="btn btn-clips-100">Navigate</button>
     </div>
 </div>
-
+<hr class="form-group">
 <div class="row">
     <div class="form-group col-xs-24 col-sm-20">
         <label for="title"><?php echo $this->formLabel($f->get('title')) ?></label>

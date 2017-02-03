@@ -22,7 +22,7 @@ use Clips\Controller\ClipsAbstractController;
 use Clips\Form\SectionForm;
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-use Clips\Entity\Sections as ESections;
+use Clips\Entity\Section as SectionEntity;
 
 /**
  * Class QuestionController
@@ -75,7 +75,7 @@ class QuestionController extends ClipsAbstractController
 //        $this->form = new QuestionForm($this->entityManager);
         $section = $this->getSectionCollection([],['reportOrder' => 'ASC'],1);
 
-        $entity = new ESections($this->entityManager);
+        $entity = new SectionEntity($this->entityManager);
         $entity->getRepository();
         // $this->params('id')
 
