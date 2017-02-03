@@ -75,11 +75,8 @@ class Sections extends ClipsAbstractEntity
 
     public function __construct($that = [])
     {
-//        var_dump(get_class($that)); die();
-        if ($that instanceof \Doctrine\ORM\EntityManager) {
-//        var_dump(get_class($this));
-//        die();
-        }
+        parent::__construct($that);
+       
         $this->questions = new ArrayCollection();
     }
 
