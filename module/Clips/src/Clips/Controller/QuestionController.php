@@ -9,20 +9,23 @@
  */
 
 namespace Clips\Controller;
-//
+
 //use Zend\Form\Annotation\AnnotationBuilder;
 //use Zend\Mvc\Controller\AbstractActionController;
 //use Zend\ServiceManager\ServiceManager;
 //use Zend\View\Model\ViewModel;
-use Clips\Entity\Questions;
-use Clips\Form\QuestionForm;
 //use Zend\Form\FormInterface;
+//use Clips\Controller\ClipsAbstractController;
 
-use Clips\Controller\ClipsAbstractController;
+use Clips\Form\QuestionForm;
+use Clips\Entity\Question as QuestionEntity;
+
 use Clips\Form\SectionForm;
+use Clips\Entity\Section as SectionEntity;
+
 use DoctrineModule\Stdlib\Hydrator\DoctrineObject as DoctrineHydrator;
 
-use Clips\Entity\Section as SectionEntity;
+
 
 /**
  * Class QuestionController
@@ -46,15 +49,16 @@ class QuestionController extends ClipsAbstractController
      * @var QuestionForm
      */
     protected $form = null;
-//
-//    /**
-//     * @var \Zend\ServiceManager\ServiceManager
-//     */
-//    protected $serviceManager = null;
-//    /**
-//     * @var \Doctrine\ORM\EntityManager
-//     */
-//    protected $entityManager = null;
+
+    /**
+     * @var \Zend\ServiceManager\ServiceManager
+     */
+    protected $serviceManager = null;
+    /**
+     * @var \Doctrine\ORM\EntityManager
+     */
+    protected $entityManager = null;
+
     /**
      * @param array $criteria
      * @param array $orderBy

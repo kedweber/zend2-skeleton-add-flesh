@@ -1,4 +1,51 @@
+<style type="text/css">
+
+    .select {
+        background-color: #738c9c;
+        padding: 5px 15px;
+        min-width: 75px;
+        cursor: pointer;
+        font-size: 14px;
+        margin: 5px 0;
+    }
+    .dropup, .dropdown {
+        position: relative;
+    }
+    .select a {
+        color: white;
+        width: 100%;
+        display: block;
+        padding: 0;
+    }
+    .select ul.dropdown-menu {
+        min-width: 100%;
+        width: 100%;
+        border: 5px solid #ff6b00;
+        background-color: white;
+        padding: 0;
+        margin: 0;
+        border-radius: 0px;
+        max-height: 150px;
+        overflow: scroll;
+    }
+</style>
+<div class="form-group col-xs-24 col-sm-20">
+    <div class="dropdown select open" data-for="countryCode">
+        <input id="countryCode" type="hidden" name="countryCode" value="NL">
+        <a id="countryCode" data-target="#" data-toggle="dropdown" class="dropdown-toggle" tabindex="" aria-haspopup="true" aria-expanded="true">
+            Nederland
+            <i class="dropdown"></i>
+            <span class="glyphicons"></span>
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="countryCode">
+            <li class=""><a data-value="BE" href="#">België</a></li>
+            <li class=""><a data-value="DE" href="#">Duitsland</a></li>
+            <li class=""><a data-value="NL" href="#">Nederland</a></li>
+        </ul>
+    </div>
+</div>
 <?php
+// PROGRESSIVE ENHANCEMENT, assure javascript is enabled before using clips selection list
 $f = $this->form;
 $f = $this->fieldSetz;
 ?>

@@ -159,3 +159,11 @@ input[type='text']:focus, input[type='search']:focus, input[type='password']:foc
 .jumbo-header {
     margin-top: 0px;
 }
+.navbar-green {
+    background-color: #222;
+    border-color: #080808;
+    background-color: rgba(6, 53, 17, 0.93);
+    background-color: rgb(60, 97, 69);
+    background-color: rgba(60, 97, 69, 0.93);
+
+}
