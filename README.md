@@ -6,8 +6,8 @@
 
 Teachers are charged with carrying the most precious burden of shaping the future on an astoundingly low budget. Among the many daily tasks an important and personal assessment of the child's development is to be consolidated into a profile. The primary purpose of the profile is to inform the parents of their child's developmental strengths and weaknesses. 
 
-![eCLIPS][http://kedweber.github.io/zend2-skeleton-add-flesh/res/img/clips-n-girl-400x400.jpg]
-![eCLIPS][docs/res/img/clips-n-girl-400x400.jpg]
+![eCLIPS](http://kedweber.github.io/zend2-skeleton-add-flesh/res/img/clips-n-girl-400x400.jpg)
+![eCLIPS](docs/res/img/clips-n-girl-400x400.jpg)
 
 When reviewing a child, within the scaffolding of national standards, often teachers find themselves at an impasse. There are a number of factors (areas of observation) that need to be considered based on the child's age.
 
