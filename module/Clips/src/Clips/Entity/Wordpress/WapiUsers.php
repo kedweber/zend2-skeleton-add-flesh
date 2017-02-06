@@ -13,6 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
+use Clips\Entity\Wordpress\WordpressAbstractEntity;
 
 /**
  * WapiUsers
@@ -20,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wapi_users", indexes={@ORM\Index(name="user_login_key", columns={"user_login"}), @ORM\Index(name="user_nicename", columns={"user_nicename"}), @ORM\Index(name="user_email", columns={"user_email"})})
  * @ORM\Entity
  */
-class WapiUsers extends WordpressAbstractEnity 
+class WapiUsers extends WordpressAbstractEntity
 {
     /**
      * @var integer
