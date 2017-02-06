@@ -1,11 +1,15 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: ked
- * Date: 03/02/17
- * Time: 04:40
+ * CLiPs - WEBerStudio.net
+ *
+ * Doctrine Entity for Accessing the basic Core WordPress Tables
+ *
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
  */
-
 namespace Clips\Entity;
 
 use Doctrine\ORM\EntityManager;
