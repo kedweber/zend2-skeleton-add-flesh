@@ -59,6 +59,8 @@ class QuestionController extends ClipsAbstractController
      */
     protected $entityManager = null;
 
+    protected $entityManagerWordpresss = null;
+
     /**
      * Fully Qualified Name of the main Doctrine Entity used by this
      * controller
@@ -80,10 +82,25 @@ class QuestionController extends ClipsAbstractController
             ->findBy($criteria, $orderBy, $limit, $offset);
         return $this->sections;
     }
-    
+
+    protected function getWordpressEntityManager()
+    {
+//        $this->entityManagerWordpresss;
+        $wpEM = $this->serviceManager->get('doctrine.entitymanager.orm_wordpress');
+        $repo = $wpEM->getRepository('\Clips\Entity\Wordpress\WapiPosts');
+        var_dump($repo); die();
+        return $this;
+    }
+
+
     public function indexAction()
     {
         parent::indexAction();
+
+        $this->getWordpressEntityManager();
+
+
+
 //        $this->form = new QuestionForm($this->entityManager);
         $section = $this->getSectionCollection([],['reportOrder' => 'ASC'],1);
 

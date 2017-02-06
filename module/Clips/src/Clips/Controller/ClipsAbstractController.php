@@ -55,7 +55,8 @@ abstract class ClipsAbstractController extends AbstractActionController implemen
     {
 //        $this->objViewModel = new ViewModel();
         $this->serviceManager = $this->getServiceLocator();
-        $this->entityManager = $this->serviceManager->get('Doctrine\ORM\EntityManager');
+        //$this->entityManager = $this->serviceManager->get('Doctrine\ORM\EntityManager');
+        $this->entityManager = $this->serviceManager->get('doctrine.entitymanager.orm_default');
         return $this;
     }
 
@@ -65,6 +66,7 @@ abstract class ClipsAbstractController extends AbstractActionController implemen
      */
     protected function repository($fullyQualifiedName = '')
     {
+        //TODO store the main repository but return requested
         if($fullyQualifiedName !== '') {
             $this->objRepository = $this->entityManager->getRepository($fullyQualifiedName);
         }
