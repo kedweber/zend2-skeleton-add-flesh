@@ -1,0 +1,10 @@
+<?php echo $this->partial("clips/partials/header", []); ?>
+    <body>
+    <?php echo $this->partial("clips/partials/navigation-top", []); ?>
+    <div id="main" class="main">
+        <?php echo $this->content; ?>
+        <?php echo $this->inlineScript() ?>
+    </div>
+    <?php echo $this->partial("clips/partials/footer", []); ?>
+    </body>
+</html>
