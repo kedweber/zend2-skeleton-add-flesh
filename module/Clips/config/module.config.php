@@ -306,7 +306,24 @@ return array(
                 // Set a Default Repository
                 //'default_repository_class_name' => 'SomeCustomRepository'
             ),
+            // Additional Database connections
+            'orm_wordpress' => array(
+                'metadata_cache' => 'array',
+                'query_cache' => 'array',
+                'result_cache' => 'array',
+                'hydration_cache' => 'array',
+                'generate_proxies' => $developmentEnvironment,
+            ),
+            'orm_woocommerce' => array(
+                'metadata_cache' => 'array',
+                'query_cache' => 'array',
+                'result_cache' => 'array',
+                'hydration_cache' => 'array',
+                'generate_proxies' => $developmentEnvironment,
+            ),
         ),
+        // defined in application.config file which uses the config_glob_paths to
+        // set sensitive local.php settings
         'connection' => array(
             'orm_default' => array(
                 // Register Type Mappings
@@ -318,6 +335,18 @@ return array(
                     //'KedWeber'
                 ),
             ),
+            'orm_wordpress' => array(
+                'doctrine_type_mappings' => array(
+                ),
+                'doctrineCommentedTypes' => array(
+                )
+            ),
+            'orm_woocommerce' => array(
+                'doctrine_type_mappings' => array(
+                ),
+                'doctrineCommentedTypes' => array(
+                )
+            )
         ),
         'entity_resolver' => array(
             'orm_default' => array(

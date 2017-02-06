@@ -9,7 +9,7 @@ use Clips\Entity\Question;
 
 /**
  * Section
- *
+ * 
  * @ORM\Table(name="sections")
  * @ORM\Entity
  */

@@ -26,6 +26,7 @@ abstract class ClipsAbstractForm extends ZendForm implements ObjectManagerAwareI
 
     /**
      * Set the object manager
+     * Called from getFormElementConfig functions' ObjectManagerInitializer
      *
      * @param ObjectManager $objectManager
      */

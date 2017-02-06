@@ -45,6 +45,7 @@ class Module
             ),
             'initializers' => array(
                 'ObjectManagerInitializer' => function ($element, $formElements) {
+                    //TODO remove
                     echo "Module.getFormElementConfig()\n";
                     print_r($element, False);die();
                     if ($element instanceof ObjectManagerAwareInterface) {

@@ -60,6 +60,14 @@ class QuestionController extends ClipsAbstractController
     protected $entityManager = null;
 
     /**
+     * Fully Qualified Name of the main Doctrine Entity used by this
+     * controller
+     *
+     * @var string
+     */
+    protected $repositoryFQN = 'Clips\Entity\Sections';
+
+    /**
      * @param array $criteria
      * @param array $orderBy
      * @param null $limit
@@ -68,7 +76,7 @@ class QuestionController extends ClipsAbstractController
      */
     protected function getSectionCollection(array $criteria = [], array $orderBy = [], $limit = null, $offset = null) 
     {
-        $this->sections = $this->repository('Clips\Entity\Sections')
+        $this->sections = $this->repository($this->repositoryFQN)
             ->findBy($criteria, $orderBy, $limit, $offset);
         return $this->sections;
     }
@@ -83,7 +91,7 @@ class QuestionController extends ClipsAbstractController
         $entity->getRepository();
         // $this->params('id')
 
-        $section = $this->entityManager->getRepository('Clips\Entity\Sections')->find(5);
+        $section = $this->entityManager->getRepository($this->repositoryFQN)->find(5);
 //var_dump($section);die();
 
         $this->section = $section;
@@ -108,7 +116,7 @@ class QuestionController extends ClipsAbstractController
         //$this->form->getHydrator()->hydrate($this->form->elements, $this->section);
 
 //        $this->form->bind($this->section);
-        //$this->form->setHydrator(new DoctrineEntity($this->entityManager,'Clips\Entity\Sections'));
+        //$this->form->setHydrator(new DoctrineEntity($this->entityManager,$this->repositoryFQN));
 
         return $this->viewModel([
             'form' => $this->form,
