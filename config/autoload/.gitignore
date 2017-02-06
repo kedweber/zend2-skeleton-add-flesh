@@ -1,6 +1,0 @@
-# PROTECT YOUR PRIVATE SETTINGS!
-# This file is included in the repository to assure that your private configurations
-# are not accidently posted to a public repository. It is suggested that you keep this
-# file in your environment
-local.php
-*.local.php
