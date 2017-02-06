@@ -13,6 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
+use Clips\Entity\Wordpress\WordpressAbstractEntity;
 
 /**
  * WapiLinks
@@ -20,7 +21,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wapi_links", indexes={@ORM\Index(name="link_visible", columns={"link_visible"})})
  * @ORM\Entity
  */
-class WapiLinks extends WordpressAbstractEnity
+class WapiLinks extends WordpressAbstractEntity
 {
     /**
      * @var integer
