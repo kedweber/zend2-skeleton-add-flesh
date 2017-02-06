@@ -38,5 +38,76 @@ class WapiTermRelationships
     private $termOrder = '0';
 
 
-}
 
+    /**
+     * Set objectId
+     *
+     * @param integer $objectId
+     *
+     * @return WapiTermRelationships
+     */
+    public function setObjectId($objectId)
+    {
+        $this->objectId = $objectId;
+
+        return $this;
+    }
+
+    /**
+     * Get objectId
+     *
+     * @return integer
+     */
+    public function getObjectId()
+    {
+        return $this->objectId;
+    }
+
+    /**
+     * Set termTaxonomyId
+     *
+     * @param integer $termTaxonomyId
+     *
+     * @return WapiTermRelationships
+     */
+    public function setTermTaxonomyId($termTaxonomyId)
+    {
+        $this->termTaxonomyId = $termTaxonomyId;
+
+        return $this;
+    }
+
+    /**
+     * Get termTaxonomyId
+     *
+     * @return integer
+     */
+    public function getTermTaxonomyId()
+    {
+        return $this->termTaxonomyId;
+    }
+
+    /**
+     * Set termOrder
+     *
+     * @param integer $termOrder
+     *
+     * @return WapiTermRelationships
+     */
+    public function setTermOrder($termOrder)
+    {
+        $this->termOrder = $termOrder;
+
+        return $this;
+    }
+
+    /**
+     * Get termOrder
+     *
+     * @return integer
+     */
+    public function getTermOrder()
+    {
+        return $this->termOrder;
+    }
+}
