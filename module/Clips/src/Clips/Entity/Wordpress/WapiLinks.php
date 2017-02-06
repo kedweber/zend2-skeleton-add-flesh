@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * CLiPs - WEBerStudio.net
+ *
+ * Doctrine Entity for Accessing the basic Core WordPress Tables
+ *
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
+ */
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wapi_links", indexes={@ORM\Index(name="link_visible", columns={"link_visible"})})
  * @ORM\Entity
  */
-class WapiLinks
+class WapiLinks extends WordpressAbstractEnity
 {
     /**
      * @var integer
@@ -386,22 +396,3 @@ class WapiLinks
      *
      * @param string $linkRss
      *
-     * @return WapiLinks
-     */
-    public function setLinkRss($linkRss)
-    {
-        $this->linkRss = $linkRss;
-
-        return $this;
-    }
-
-    /**
-     * Get linkRss
-     *
-     * @return string
-     */
-    public function getLinkRss()
-    {
-        return $this->linkRss;
-    }
-}

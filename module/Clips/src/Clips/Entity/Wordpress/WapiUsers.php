@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * CLiPs - WEBerStudio.net
+ *
+ * Doctrine Entity for Accessing the basic Core WordPress Tables
+ *
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
+ */
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wapi_users", indexes={@ORM\Index(name="user_login_key", columns={"user_login"}), @ORM\Index(name="user_nicename", columns={"user_nicename"}), @ORM\Index(name="user_email", columns={"user_email"})})
  * @ORM\Entity
  */
-class WapiUsers
+class WapiUsers extends WordpressAbstractEnity 
 {
     /**
      * @var integer

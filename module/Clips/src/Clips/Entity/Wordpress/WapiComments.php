@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * CLiPs - WEBerStudio.net
+ *
+ * Doctrine Entity for Accessing the basic Core WordPress Tables
+ * 
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
+ */
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;

@@ -1,5 +1,15 @@
 <?php
-
+/**
+ * CLiPs - WEBerStudio.net
+ *
+ * Doctrine Entity for Accessing the basic Core WordPress Tables
+ *
+ *
+ * @author    Ked Weber <not@weberstudio.net>
+ * @link      https://github.com/kedweber/zend2-skeleton-add-flesh
+ * @copyright Copyright (c) 2017
+ * @license   All rights reserved
+ */
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -10,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="wapi_posts", indexes={@ORM\Index(name="post_name", columns={"post_name"}), @ORM\Index(name="type_status_date", columns={"post_type", "post_status", "post_date", "ID"}), @ORM\Index(name="post_parent", columns={"post_parent"}), @ORM\Index(name="post_author", columns={"post_author"})})
  * @ORM\Entity
  */
-class WapiPosts
+class WapiPosts extends WordpressAbstractEntity
 {
     /**
      * @var integer
