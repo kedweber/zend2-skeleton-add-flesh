@@ -13,7 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiPostmeta
@@ -21,7 +21,7 @@ use Clips\Entity\Wordpress\WordpressAbstractEntity;
  * @ORM\Table(name="wapi_postmeta", indexes={@ORM\Index(name="post_id", columns={"post_id"}), @ORM\Index(name="meta_key", columns={"meta_key"})})
  * @ORM\Entity
  */
-class WapiPostmeta extends WordpressAbstractEntity
+class WapiPostmeta extends WapiAbstractEntity
 {
     /**
      * @var integer

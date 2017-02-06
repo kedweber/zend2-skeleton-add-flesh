@@ -13,7 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiTermmeta

@@ -13,7 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiComments
@@ -21,7 +21,7 @@ use Clips\Entity\Wordpress\WordpressAbstractEntity;
  * @ORM\Table(name="wapi_comments", indexes={@ORM\Index(name="comment_post_ID", columns={"comment_post_ID"}), @ORM\Index(name="comment_approved_date_gmt", columns={"comment_approved", "comment_date_gmt"}), @ORM\Index(name="comment_date_gmt", columns={"comment_date_gmt"}), @ORM\Index(name="comment_parent", columns={"comment_parent"}), @ORM\Index(name="comment_author_email", columns={"comment_author_email"})})
  * @ORM\Entity
  */
-class WapiComments extends WordpressAbstractEntity
+class WapiComments extends WapiAbstractEntity
 {
     /**
      * @var integer

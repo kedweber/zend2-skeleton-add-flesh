@@ -13,7 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiTermTaxonomy
@@ -21,7 +21,7 @@ use Clips\Entity\Wordpress\WordpressAbstractEntity;
  * @ORM\Table(name="wapi_term_taxonomy", uniqueConstraints={@ORM\UniqueConstraint(name="term_id_taxonomy", columns={"term_id", "taxonomy"})}, indexes={@ORM\Index(name="taxonomy", columns={"taxonomy"})})
  * @ORM\Entity
  */
-class WapiTermTaxonomy extends WordpressAbstractEntity
+class WapiTermTaxonomy extends WapiAbstractEntity
 {
     /**
      * @var integer

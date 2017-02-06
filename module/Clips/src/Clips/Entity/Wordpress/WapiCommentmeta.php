@@ -12,7 +12,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiCommentmeta
@@ -20,7 +20,7 @@ use Clips\Entity\Wordpress\WordpressAbstractEntity;
  * @ORM\Table(name="wapi_commentmeta", indexes={@ORM\Index(name="comment_id", columns={"comment_id"}), @ORM\Index(name="meta_key", columns={"meta_key"})})
  * @ORM\Entity
  */
-class WapiCommentmeta extends WordpressAbstractEntity
+class WapiCommentmeta extends WapiAbstractEntity
 {
     /**
      * @var integer

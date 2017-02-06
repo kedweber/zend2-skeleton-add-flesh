@@ -83,13 +83,12 @@ class QuestionController extends ClipsAbstractController
         return $this->sections;
     }
 
-    protected function getWordpressEntityManager()
+    protected function getWordPressPosts()
     {
-//        $this->entityManagerWordpresss;
         $wpEM = $this->serviceManager->get('doctrine.entitymanager.orm_wordpress');
         $repo = $wpEM->getRepository('\Clips\Entity\Wordpress\WapiPosts');
-        var_dump($repo); die();
-        return $this;
+        $posts = $repo->findAll();
+        return $posts;
     }
 
 
@@ -97,7 +96,8 @@ class QuestionController extends ClipsAbstractController
     {
         parent::indexAction();
 
-        $this->getWordpressEntityManager();
+        // Gets all posts
+        // $this->getWordPressPosts();
 
 
 

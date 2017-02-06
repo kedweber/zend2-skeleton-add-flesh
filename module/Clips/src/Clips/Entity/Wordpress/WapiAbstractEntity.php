@@ -16,7 +16,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Repository;
 
 
-abstract class WordpressAbstractEntity
+abstract class WapiAbstractEntity
 {
     /**
      * @var  \Doctrine\ORM\EntityManager|null

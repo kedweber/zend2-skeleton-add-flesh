@@ -13,7 +13,7 @@
 namespace Clips\Entity\Wordpress;
 
 use Doctrine\ORM\Mapping as ORM;
-use Clips\Entity\Wordpress\WordpressAbstractEntity;
+use Clips\Entity\Wordpress\WapiAbstractEntity;
 
 /**
  * WapiOptions
@@ -21,7 +21,7 @@ use Clips\Entity\Wordpress\WordpressAbstractEntity;
  * @ORM\Table(name="wapi_options", uniqueConstraints={@ORM\UniqueConstraint(name="option_name", columns={"option_name"})})
  * @ORM\Entity
  */
-class WapiOptions extends WordpressAbstractEntity
+class WapiOptions extends WapiAbstractEntity
 {
     /**
      * @var integer
