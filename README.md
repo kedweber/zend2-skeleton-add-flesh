@@ -14,7 +14,7 @@ CLIPS will offer an outline of considerations that should be covered, while affo
 
 Every profile requires adding objects (work samples and observation records) to indicate work done in real-life situations with authentic problem solving. CLIPS will need to allow for inclusion of such custom objects.
 
-![eCLIPS](docs/res/img/use_case_report_structure_general.jpg)
+![eCLIPS](http://kedweber.github.io/zend2-skeleton-add-flesh/res/img/use_case_report_structure_general.jpg)
 
 
 # Tecnichal Goals:
