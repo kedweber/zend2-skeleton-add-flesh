@@ -397,3 +397,22 @@ class WapiLinks extends WordpressAbstractEntity
      *
      * @param string $linkRss
      *
+     * @return WapiLinks
+     */
+    public function setLinkRss($linkRss)
+    {
+        $this->linkRss = $linkRss;
+
+        return $this;
+    }
+
+    /**
+     * Get linkRss
+     *
+     * @return string
+     */
+    public function getLinkRss()
+    {
+           return $this->linkRss;
+    }
+}
