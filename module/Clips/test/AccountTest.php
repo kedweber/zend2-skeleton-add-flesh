@@ -9,8 +9,9 @@
  */
 namespace ClipsTest;
 
+use PHPUnit_Framework_TestCase;
 
-class AccountTest extends \PHP_Unit_Framework_TestCase
+class AccountTest extends \PHPUnit_Framework_TestCase
 {
     public function canCreateAccountObject()
     {

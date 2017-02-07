@@ -1,0 +1,20 @@
+<?php
+
+if (!defined("ZF2_PATH")) {
+    define("ZF2_PATH", dirname(__DIR__) . "../../../");
+}
+return array(
+    'modules' => array(
+        'Travolute',
+    ),
+    'module_listener_options' => array(
+        'config_glob_paths'    => array(
+            '../../../config/autoload/{,*.}{global,local}.php',
+            '../../../config/autoload/' . (getenv('APPLICATION_ENV') ? : 'local') . '/{,*.}{global,local}.php',
+        ),
+        'module_paths' => array(
+            'module',
+            'vendor',
+        ),
+    ),
+);

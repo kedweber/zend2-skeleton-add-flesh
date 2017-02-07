@@ -39,11 +39,6 @@
     "zendframework/zend-developer-tools": "^1.0"
   },
   "scripts": {
-    // Requires zfcampus/zfdevelopment-mode
-    //"development-disable": "zf-development-mode disable",
-    //"development-enable": "zf-development-mode disable",
-    //"development-status": "zf-development-mode status",
-    // Use PHP to serve this project on port 8080
     "self-serve": "php -S 0.0.0.0:8080 -t public/ public/index.php"
   },
   "config": {
